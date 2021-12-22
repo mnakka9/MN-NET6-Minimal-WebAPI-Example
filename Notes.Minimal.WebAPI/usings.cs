@@ -1,0 +1,9 @@
+﻿global using Microsoft.OpenApi.Models;
+global using Swashbuckle.AspNetCore.SwaggerGen;
+global using System.Collections.Generic;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Notes.WebAPI.Data;
+global using Notes.WebAPI.Data.Repository;
+global using Notes.WebAPI.Data.Models;
+global using Notes.WebAPI.Attributes;

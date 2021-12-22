@@ -1,4 +1,5 @@
-﻿using Notes.WebAPI.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Notes.WebAPI.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,10 +128,9 @@ namespace Notes.WebAPI.Data.Repository
         {
             using (var context = new NotesDbContext())
             {
-                return context.Notes.Where(n => 
-                n.NoteContent.Contains(term, StringComparison.OrdinalIgnoreCase)
-                || n.Title.Contains(term, StringComparison.OrdinalIgnoreCase)
-                ).ToList();
+               var allNotes = context.Notes.AsNoTracking().ToList();
+
+                return allNotes.FindAll(n => (n.Title.Contains(term, StringComparison.OrdinalIgnoreCase) || n.NoteContent.Contains(term, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }
